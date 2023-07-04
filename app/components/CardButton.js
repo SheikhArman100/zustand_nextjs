@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState,useMemo } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { addToCart, useCart } from "../Store/cartStore";
 
@@ -8,6 +8,8 @@ const CardButton = ({ image, title, type, price }) => {
   const [isAdded, setIsAdded] = useState(false);
 
   const cart=useCart()
+
+   const findProduct = useMemo(() => cart?.find((p) => p.title === title) , [cart]);
 
 
   const handleClick = () => {
@@ -22,7 +24,6 @@ const CardButton = ({ image, title, type, price }) => {
         quantity: 1,
         price: price,
         totalPrice:price,
-        addToCart:true,
         addToCheckout: false,
       });
 
@@ -34,12 +35,12 @@ const CardButton = ({ image, title, type, price }) => {
   return (
     <button
       className="p-1 bg-green-400 my-auto rounded-md text-white text-xs md:text-sm hidden group-hover:block"
-      disabled={isAdded}
+      disabled={isAdded || findProduct}
       onClick={handleClick}
     >
       {isLoading ? (
         <span className="loading loading-spinner loading-xs  "></span>
-      ) :isAdded  ? (
+      ) :isAdded ||findProduct  ? (
         <span className="flex items-center justify-center gap-x-1">
           <AiOutlineCheck size={20} /> Added
         </span>

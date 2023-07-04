@@ -8,8 +8,8 @@ import CartNumber from "./CartNumber";
 
 const Navbar = () => {
   return (
-    <div className="w-full h-[4rem] border-b-2 relative flex items-center justify-between px-6 sm:px-14">
-      <div className="flex items-center gap-x-2">
+    <div className="w-full h-[4rem] border-b-2 relative flex items-center justify-between ">
+      <div className="flex items-center gap-x-2 ml-6 sm:ml-14">
         <Image
           src={Logo}
           alt="logo"
@@ -21,7 +21,7 @@ const Navbar = () => {
           Zustand
         </Link>
       </div>
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center gap-x-2 mr-6 sm:mr-14">
         {/* ------------avatar----------------------- */}
          <div className="avatar online h-10 w-10">
 
