@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ZustandHydration>
-          <main className="flex flex-col min-h-screen ">
+          <main className="flex flex-col min-h-screen relative">
             <Navbar />
             {children}
           </main>

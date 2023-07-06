@@ -21,6 +21,12 @@ export const addToCart = (product) => {
   }));
 };
 
+export const removeFromCart = (cartId) => {
+  useCartStore.setState((state) => ({
+    cart: state.cart.filter((product) => product.id !== cartId),
+  }));
+};
+
 export const addToCheckout = (cartId) => {
   useCartStore.setState((state) => ({
     cart: state.cart.map((item) =>
@@ -50,7 +56,10 @@ export const decreaseQuantity = (cartId) => {
         ? {
             ...item,
             quantity: item.quantity > 1 ? item.quantity - 1 : 1,
-            totalPrice:item.quantity > 1 ? item.price * (item.quantity - 1) : item.price * 1,
+            totalPrice:
+              item.quantity > 1
+                ? item.price * (item.quantity - 1)
+                : item.price * 1,
           }
         : item
     ),
